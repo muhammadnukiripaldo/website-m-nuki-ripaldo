@@ -57,18 +57,43 @@
         input[type="submit"]:hover {
             background-color: #125bdb;
         }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form action="laman.html" method="get">
+        <form id="loginForm">
             <label for="username">Username:</label>
-            <input type="text" id="username" name="nuki" required><br><br>
+            <input type="text" id="username" name="username" required><br><br>
             <label for="password">Password:</label>
-            <input type="password" id="password" name="nuki" required><br><br>
+            <input type="password" id="password" name="password" required><br><br>
             <input type="submit" value="Login">
+            <p class="error-message" id="errorMessage"></p>
         </form>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            
+            // Get input values
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            
+            // Example validation (replace with your actual validation logic)
+            if (username === 'nuki' && password === 'nuki') {
+                // Redirect to index.html on successful login
+                window.location.href = 'laman.html';
+            } else {
+                // Show error message
+                document.getElementById('errorMessage').textContent = 'Invalid username or password. Please try again.';
+            }
+        });
+    </script>
 </body>
 </html>
